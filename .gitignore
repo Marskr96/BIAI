@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+/PrisonersDilemma/.vs/PrisonersDilemma/v15
+/PrisonersDilemma/PrisonersDilemma/Debug
+/PrisonersDilemma/PrisonersDilemma/x64/Debug
+/PrisonersDilemma/PrisonersDilemma/x64/Release
+/.vs
