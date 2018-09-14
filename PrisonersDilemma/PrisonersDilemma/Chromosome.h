@@ -6,7 +6,7 @@
 #include <functional>
 #include <cstdlib>
 #include <iostream>
-#include <Windows.h>
+#include <windows.h>
 
 using namespace std;
 

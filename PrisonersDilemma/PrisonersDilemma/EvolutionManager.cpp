@@ -76,6 +76,8 @@ vector<Chromosome> EvolutionManager::operate()
 		}
 		avgFitness = tmp / population.size();
 		sort(population.begin(), population.end(), Better());
+		cout << "\nCycle " << i + 1;
+		this->display();
 		population.erase(population.begin() + (int)(numberOfIndividuals*0.75), population.end());
 		for (int j = 0; newPopulation.size() < numberOfIndividuals; j++)
 		{
@@ -122,6 +124,7 @@ vector<Chromosome> EvolutionManager::operate()
 		}
 		newPopulation.clear();
 	}
+	
 	return population;
 }
 
@@ -138,8 +141,16 @@ bool EvolutionManager::chance(double prob)
 double EvolutionManager::calculateFitness(int minRawScore, int avgRawScore, int rawScore)
 {
 	double a, b, fitness;
-	a = (avgRawScore)/(avgRawScore - minRawScore);
-	b = -(minRawScore)*(avgRawScore / (avgRawScore - minRawScore));
+	if (avgRawScore - minRawScore != 0)
+	{
+		a = (avgRawScore) / (avgRawScore - minRawScore);
+		b = -(minRawScore)*(avgRawScore / (avgRawScore - minRawScore));
+	}
+	else
+	{
+		a = (avgRawScore) / (avgRawScore - minRawScore + 0.0001);
+		b = -(minRawScore)*(avgRawScore / (avgRawScore - minRawScore + 0.0001));
+	}
 	fitness = (a*rawScore) + b;
 
 	return fitness;
